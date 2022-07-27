@@ -1,22 +1,23 @@
 import React from "react";
-import { Admin, Resource, ListGuesser} from "react-admin";
+import { Admin, Resource, ListGuesser, EditGuesser} from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
-import { PostEdit } from "./components/PostEdit";
-
+import { PostEdit } from "./components/Post/PostEdit";
+import { PostList } from "./components/Post/PostList";
+import { PostCreate } from "./components/Post/PostCreate";
+import { UserList } from "./components/User/UserList";
 
 
 const App = () => (
   <Admin
     dataProvider={jsonServerProvider("http://localhost:3000")}
   >
-    {/* <Resource name="posts" list={ListGuesser} /> */}
-    <Resource name="posts" list={ListGuesser} edit={PostEdit} />
-    <Resource name="users" list={ListGuesser} />
-    <Resource name="disciplines" list={ListGuesser} />
-    <Resource name="tags" list={ListGuesser} />
-    <Resource name="scores" list={ListGuesser} />
-    <Resource name="comments" list={ListGuesser} />
+    <Resource name="posts" list={PostList} edit={PostEdit} create={PostCreate}  />
+    <Resource name="users" list={UserList} edit={EditGuesser} create={PostCreate}  />
+    <Resource name="disciplines" list={ListGuesser} edit={EditGuesser} create={PostCreate}  />
+    <Resource name="tags" list={ListGuesser} edit={EditGuesser} create={PostCreate}  />
+    <Resource name="scores" list={ListGuesser} edit={EditGuesser} create={PostCreate}  />
+    <Resource name="comments" list={ListGuesser} edit={EditGuesser} create={PostCreate}  />
   </Admin>
 );
 
-export default App;
+export default App; 
